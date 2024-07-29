@@ -1,0 +1,127 @@
+{% extends "adminMEfixed.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "/css/style.css" %}">
+    <script src="https://kit.fontawesome.com/708d46c7cc.js" crossorigin="anonymous"></script>
+    {% load static %}  
+    <script src="{% static "/js/script.js" %}"></script>
+   </head>
+<body>
+   {% block content %}
+   <div class="rightbody ">
+    <form class="editform" method="POST" action="/update/{{employee.eid}}" enctype="multipart/form-data">
+        {% csrf_token %}  
+    <div>  
+<br>  
+    <div>  
+    <div class="col-sm-4">  
+    <h3>Update Details</h3>  
+    </div>  
+  </div>  
+    <div class="econtainer">  
+    <label class="col-sm-2 col-form-label">Employee Id:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="eid" id="id_eid" value="{{ employee.eid }}"/>  
+    </div>  
+  </div>  
+  <div class="econtainer">  
+    <label class="col-sm-2 col-form-label">Employee Name:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="ename" id="id_ename" value="{{ employee.ename }}" />  
+    </div>  
+  </div>  
+    <div class="econtainer">  
+    <label class="col-sm-2 col-form-label">Employee Email:</label>  
+    <div class="col-sm-4">  
+        <input type="email" name="email" id="id_email" value="{{ employee.email }}" />  
+    </div>  
+  </div>  
+    <div class="econtainer">  
+    <label class="col-sm-2 col-form-label">Password:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="password" id="id_password" value="{{ employee.password }}" />  
+    </div>  
+  </div>  
+
+  <div class="econtainer">  
+    <label class="col-sm-2 col-form-label">Address:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="address" id="id_address" value="{{ employee.address }}" />  
+    </div>  
+  </div>  
+
+  <div class="econtainer">  
+    <label class="col-sm-2 col-form-label">Salary:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="salary" id="id_salary" value="{{ employee.salary }}" />  
+    </div>  
+  </div> 
+  
+  <div class="econtainer">  
+    <label class="col-sm-2 col-form-label">Designation:</label>  
+    <div class="col-sm-4">  
+        <input type="text" name="designation" id="id_designation" value="{{ employee.designation }}" />  
+    </div>  
+  </div>  
+
+
+
+
+  <div class="econtainer">
+    <label class="col-sm-2 col-form-label" for="inputState">Department:</label>
+    {% if employee.dept == "IT" %}<select id="inputState" name="dept">
+        <option >Choose...</option>
+         <option selected value="IT">IT</option>
+         <option value="SalesMarketing">Sales and Marketing</option>
+         <option value="HR">HR</option>
+       </select>{% endif %}
+
+       {% if employee.dept == "SalesMarketing" %}<select id="inputState" name="dept">
+        <option >Choose...</option>
+         <option value="IT">IT</option>
+         <option selected value="SalesMarketing">Sales and Marketing</option>
+         <option value="HR">HR</option>
+       </select>{% endif %}
+
+       {% if employee.dept == "HR" %}<select id="inputState" name="dept">
+        <option >Choose...</option>
+         <option value="IT">IT</option>
+         <option value="SalesMarketing">Sales and Marketing</option>
+         <option selected value="HR">HR</option>
+       </select>{% endif %}
+    
+  </div>
+
+  {% comment %} <div class="form-group row">
+    <label class="form-label" for="image">Provide Image:</label>
+    <input accept="image/*" id="id_image" name="image" required="" type="file"/ value="{{ employee.image.url }}">
+    </div> {% endcomment %}
+
+
+    <div class="econtainer">
+        <label class="filelabel" for="id_image2">Change Your Profile Image</label>
+        <input accept="image/*" id="id_image2" name="image" type="file" src="{{ employee.image.url }}">
+    </div>
+    {% comment %} <img src="{{ employee.image.url }}" alt="Employee Image"> {% endcomment %}
+
+    <div class="econtainer">  
+    <label class="col-sm-1 col-form-label"></label>  
+    <div class="col-sm-4">  
+    <button type="submit" class="editbtn">Update</button>  
+    </div>  
+  </div>  
+    </div>  
+</form>  
+        
+   
+
+   </div>
+   {% endblock content %}
+
+</body>
+</html>

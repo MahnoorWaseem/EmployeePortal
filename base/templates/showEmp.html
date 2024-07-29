@@ -1,0 +1,48 @@
+{% extends "adminMEdashboard.html" %}
+
+{% block content2 %}
+{% if messages %}
+{% for message in messages  %}
+<center> <div class="errormsg">  {{message}}</div></center>
+{% endfor %}
+{% endif %}
+
+{% comment %} {{form}} {% endcomment %}
+{% if show2 == 'no' %}
+<table class="attendancetable emptable">  
+    <thead class="thead-dark">  
+    <tr>   
+        <th>Employee ID</th>  
+          <th>Employee Name</th>  
+          <th> Email</th>  
+          <th>Address</th>  
+          <th>Salary</th> 
+          <th>Department</th> 
+          <th>Designation</th> 
+          <th>Actions</th>   
+    </tr>  
+    </thead>  
+    {% endif %}
+    <tbody>  
+        {% for employee in employee %}  
+        <tr>  
+            <td>{{ employee.eid }}</td>  
+            <td>{{ employee.ename }}</td>  
+            <td>{{ employee.email }}</td>    
+            <td>{{ employee.address }}</td>  
+            <td>{{ employee.salary }}</td>  
+            <td>{{ employee.dept }}</td>  
+            <td>{{ employee.designation }}</td>
+  
+  
+            <td>  
+                {% comment %} <button onclick="location.href='/edit/{{ employee.eid }}' ; return confirm('Are you sure you want to delete?')"; ><span class="glyphicon glyphicon-pencil" >Update</span></button> &nbsp; {% endcomment %}
+                <a href="/edit/{{ employee.eid }}"><i title="Edit" class="fa-solid fa-pencil" style="color: #002d72;"></i></a> &nbsp;
+                <a href="/delete/{{ employee.eid }}"><i title="Delete" class="fa-solid fa-trash" style="color: #002d72;"></i></a>  
+            </td>  
+        </tr>  
+    {% endfor %}    
+    </tbody>  
+</table>  
+<center><a class="viewall" href="{% url "viewall" %}">View all</a></center>
+{% endblock content2 %}

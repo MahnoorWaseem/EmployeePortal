@@ -1,0 +1,11 @@
+   {% comment %} <div class="col-md-4">
+      <label for="inputState" class="form-label">Department</label>
+      <select id="inputState" class="form-select">
+        <option selected>Choose...</option>
+        <option value="IT">IT</option>
+        <option value="Sales">Sales and Marketing</option>
+        <option value="HR">HR</option>
+      </select>
+    </div> {% endcomment %}
+
+     {% comment %} <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload"> {% endcomment %}

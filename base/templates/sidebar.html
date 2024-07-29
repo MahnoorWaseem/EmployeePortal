@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Record System</title>
+    <script src="https://kit.fontawesome.com/708d46c7cc.js" crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "/css/style.css" %}">
+</head>
+<body>
+    <div class="sidebar">
+        <div>
+            {% for profile in profile %}
+            <div><img  id="profilePic" src="{{profile.image.url}}" alt=""> </div>
+          <div class="box">  <div class="sname">{{profile.ename}}</div> <div class="designation">{{profile.designation}}</div></div>
+            {% endfor %}
+           </div>
+           
+     <ul class"list"> 
+     <li class="link purple active"><i class="fa-solid fa-laptop" style="color: #54248c;"></i>&nbsp; <a href="">Dashboard</a></li>
+     <li class="link purple"><i class="fa-solid fa-clock" style="color: #54248c;"></i> &nbsp;<a href="{% url "myattendance" %}">My Attendance</a></li>
+     <li class="link purple"> <i class="fa-solid fa-id-card" style="color: #54248c;"></i> &nbsp;<a href="{% url "myprofile" %}">My Profile</a></li>
+     <li class="link purple"> <i class="fa-solid fa-power-off" style="color: #54248c;"></i>&nbsp; &nbsp;<a href="{% url "logout" %}">Logout</a></li>
+    </ul>
+
+    </div>
+
+
+</body>
+</html>
+

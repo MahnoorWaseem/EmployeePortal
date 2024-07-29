@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal</title>
+    {% load static %} <link rel="stylesheet" type="text/css" href="{% static "/css/style.css" %}">
+</head>
+<body>
+   
+
+
+<div class="logincontainer2">
+{% load static %}
+    <center><span class='mainhead'>PORTAL</span></center>
+    <center><p class='ask'>ARE YOU AN</p></center>
+    <div class="images">
+     <div class="box b2">
+      <div class='hdiv'> <span class='jhead2'>ADMIN</span></div>
+     
+      <a href="{% url "admin" %}"><img class="indexpic" src="{% static "/images/adminpic.jpg" %}" alt=""></a>
+     </div>
+     <div class="box ">OR</div>
+     <div class="box b2">
+      <div class='hdiv'> <span class='jhead'>EMPLOYEE</span></div>
+      <a href="{% url "signin" %}"><img class="indexpic" src="{% static "/images/emppic.jpg" %}" alt=""></a>
+     </div>
+
+    </div>
+
+    
+</div>
+
+
+
+</body>
+</html>

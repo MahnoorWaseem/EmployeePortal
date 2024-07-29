@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Portal</title>
+    <script
+      src="https://kit.fontawesome.com/708d46c7cc.js"
+      crossorigin="anonymous"
+    ></script>
+    {% load static %} <link rel="stylesheet" type="text/css" href="{% static
+    "/css/style.css" %}">
+    
+    
+    {% load static %}  
+    <script src="{% static "/js/script.js" %}"></script>
+  </head>
+  <body>
+    {% load static %}
+    {% if messages %}
+    {% for message in messages  %}
+    <div class='message {{message.tags}}' id="msgg2">{{message}} <button class="close2 {{message.tags}}" onclick="document.getElementById('msgg2').style.display='none'" ><i class="fa-solid fa-close"></i></button></div>
+    {% endfor %}
+    {% endif %}
+    <div class="navbar adminme">
+      <img class="logo" src="{% static "/images/logo.png" %}" alt="">
+      <div class="text">
+        <p>Admin Dashboard</p>
+        <p class="day namecolor">
+          {{dayname}}<span class="date poppins"> &nbsp; {{date}}</span>
+        </p>
+      </div>
+      <div class="end">
+        <div class="icon">
+          <button class="dropbtn" onclick="myfunc()"><i title="Send Message" class="fa-solid fa-envelope" style="color: #a8aaad"></i></button>
+          <div class="dropdowncontent emailbox2" id="dropcontent">
+            <button class="close bgwhite" onclick="document.getElementById('dropcontent').style.display='none'" ><i class="fa-solid fa-close"></i></button>
+            <form class='emailabel' action="/sendemailadmin" method="post">
+              {% csrf_token %}
+              {{emailform}}
+              <button class='send bgblue' type="submit" onclick="document.getElementById('dropcontent').style.display='none'"><i class="fa-solid fa-paper-plane icon" title="Send"></i></button>
+          </form>
+              
+            {% comment %} <a href="{% url "sendemail" %}"><i class="fa-solid fa-paper-plane icon" title="Send"></i></a> {% endcomment %}
+
+          </div>
+        </div>
+        <div class="icon">
+          <a href="{% url "logout" %}"><i title="Logout" class="fa-solid fa-power-off" style="color: #a8aaad"></i></a>
+        </div>
+        <div class="profile">
+          {% for profile in profile %} {% comment %}
+          <img id="profilePic" src="{{profile.image.url}}" alt="" /> {%
+          endcomment %} {% comment %}
+          <div class="name">
+            <span>{{profile.ename}} &nbsp; </span> {% endcomment %}
+
+            <div class="dropdown">
+              <button class="dropbtn" onclick="myfunc2()">
+                <span class="name namecolor">{{profile.ename}}  </span>
+                <span id="downarrow">
+                <i class="fa-solid fa-angle-down"></i></span>
+              </button>
+              <div class="dropdowncontent bgwhite down2" id="dropcontent2">
+                <button class="close bgwhite" onclick="document.getElementById('dropcontent2').style.display='none'" ><i class="fa-solid fa-close"></i></button>
+                <p>Employee ID: </p>  <span class='navy'>{{profile.eid}}</span>
+                <p>Name: </p><span class='navy'>{{profile.ename}}</span>  
+                <p>Designation:   </p><span class='navy'>{{profile.designation}}</span>  
+                <p>Email:  </p><span class='navy'>{{profile.email}}</span> 
+
+              
+              </div>
+              <div class="eid poppins">{{profile.eid}}</div>
+            </div>
+
+            {% comment %} <div class="eid poppins">{{profile.eid}}</div> {% endcomment %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+     {% include "adminATTsidebar.html" %}
+      {% block content %} 
+      {% endblock content %}
+       
+
+      <script>
+        var message_ele = document.getElementById("msgg2");
+setTimeout(function(){ 
+   message_ele.style.display = "none"; 
+}, 9000);
+
+
+
+      </script>
+    
+  </body>
+</html>

@@ -1,0 +1,28 @@
+{% extends "adminATTdashboard.html" %}
+
+{% block content2 %}
+{% comment %} {{form}} {% endcomment %}
+<table class="attendancetable emptable tablebody">  
+    <thead class="thead-dark">  
+    <tr>   
+        <th>Employee ID</th>  
+        <th>Name</th>
+        <th> Date</th>  
+        <th>Time in</th>  
+        <th>Time out</th>  
+    </tr>  
+    </thead>  
+    <tbody>  
+{% for att in att %}  
+    <tr>    
+        <td>{{ att.eid_id }}</td>  
+        <td>{{ ename }}</td>  
+        <td>{{ att.date }}</td>  
+        <td>{{ att.timein }}</td>  
+        <td>{{ att.timeout }}</td>  
+
+    </tr>  
+{% endfor %}  
+    </tbody>  
+</table>  
+{% endblock content2 %}

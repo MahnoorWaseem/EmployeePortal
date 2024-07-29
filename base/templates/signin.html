@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Portal</title>
+    {% load static %} <link rel="stylesheet" type="text/css" href="{% static "/css/style.css" %}">
+</head>
+<body>
+    {% comment %} <h1>LOGIN</h1>
+    {% load static %}
+    <img class="logo" src="{% static "/images/logo.png" %}" alt="">
+
+    <img class="logo" src="{% static "/images/logo.png" %}" alt="">
+    <form action="/signin" method="post">
+    {% csrf_token %}
+   
+    {{form}}
+    <button type="submit">Login</button>
+    <div>
+        <a href="{% url "signup" %}">New Here! Create an account</a>
+      </div>
+</form> {% endcomment %}
+
+
+<div class="logincontainer">
+{% load static %}
+  <div class="loginl">
+    {% load static %}
+    <div class="div">
+    <img class="suilogo" src="{% static "/images/ssgclogo.png" %}" alt=""> <span class='ep'>SSGC EMPLOYEE PORTAL</span></div>
+    
+   <center><img class='loginpic' src="{% static "/images/login2.svg" %}" alt=""></div></center>
+    
+  <div class="loginr">
+
+    {% if messages %}
+    {% for message in messages  %}
+    <div class='message {{message.tags}}' id="msgg2">{{message}} <button class="close2 {{message.tags}}" onclick="document.getElementById('msgg2').style.display='none'" ><i class="fa-solid fa-close"></i></button></div>
+    {% endfor %}
+    {% endif %}
+    
+    <p class='lhead'>LOGIN</p>
+  <form class="lform" action="/signin" method="post">
+    {% csrf_token %}
+   
+    {{form.as_p}}
+    <center><button class='loginbtn' type="submit">Login</button></center>
+    <center>  </center>
+  
+</form>
+</div>
+</div>
+
+<script>
+  var message_ele = document.getElementById("msgg2");
+setTimeout(function(){ 
+message_ele.style.display = "none"; 
+}, 9000);
+</script>
+
+</body>
+</html>

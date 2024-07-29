@@ -1,0 +1,98 @@
+{% extends "fixedcopy.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Portal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "/css/style.css" %}">
+    <script src="https://kit.fontawesome.com/708d46c7cc.js" crossorigin="anonymous"></script>
+    {% load static %}  
+    <script src="{% static "/js/script.js" %}"></script>
+   </head>
+<body>
+   {% block content %}
+ 
+   {% comment %} {% if messages %}
+  {% for message in messages  %}
+  <div class="alert alert-{{message.tag}}" role="alert">
+    {{message}}
+  </div>
+  {% endfor %}
+   {% endif %} {% endcomment %}
+
+   {% comment %} <div class="btns">
+       <button id='tin' onclick="location.href='{% url 'timein' %}'">Time in</button>
+    <button id='tout'onclick="location.href='{% url 'timeout' %}'">Time out</button>
+</div> {% endcomment %}
+
+<div class="rightbody">
+    <div class="box1">
+        <div class="greet">
+            <div class="ghead">
+            <h1>Hi,</h1> &nbsp;
+                 {% for profile in profile  %}
+                <h1> {{profile.ename}}</h1>
+                {% endfor %}
+            </div>
+                <p>Have a Nice Day!</p>
+        </div>
+        {% load static %}
+        <div class="pic1">
+            <img src="{% static "/images/girl.svg" %}" alt="">
+        </div>
+    </div>
+
+    {% comment %} box2 {% endcomment %}
+    <div class="box2">
+     <h3>Overview</h3>
+     <div class="container">
+
+     <div class="boxes yellow">
+      <div class="left"><i class="fa-solid fa-arrow-right-to-bracket" style="color: #ffffff;"></i><h4>Check in</h4></div>
+      <div class="right" id='showtimein'>
+        {% for show in show %}
+        {{show.timein}} <br>
+        {% endfor %}
+        {% for show2 in show2  %}
+        {{show2.timein}} <br>
+        {% endfor %}
+      </div>
+
+     </div>
+     <div class="boxes blue"> <div class="left"><i class="fa-solid fa-mug-hot" style="color: #ffffff;"></i><h4>Break</h4></div>
+     <div class="right" id='showtimein'>13:30-14:30</div>
+</div>
+     <div class="boxes pink"> <div class="left"><i class="fa-solid fa-arrow-right-from-bracket" style="color: #ffffff;"></i><h4>Check out</h4></div>
+     <div class="right" id='showtimein'>
+        {% for show in show %}
+        {{show.timeout}} <br>
+        {% endfor %}
+        {% for show2 in show2 %}
+        {{show2.timeout}} <br>
+        {% endfor %}
+    </div>
+</div>
+     <div class="boxes purplebox"> <div class="left"><i class="fa-solid fa-clock" style="color: #ffffff;"></i><h4>Working hours</h4></div>
+     <div class="right" id='showtimein'>{{res}}</div>
+</div>
+    </div>
+
+    </div>
+
+{% comment %} box3 {% endcomment %}
+<div class="box3">
+    <div class="btns"><h3>Check in</h3> <button onclick="location.href='{% url 'timein' %}'"><i class="fa-solid fa-person-walking-arrow-right"></i> &nbsp; Check in</button></div>
+    <div class="btns"><h3>Check out</h3> <button onclick="location.href='{% url 'timeout' %}'">Check out &nbsp;<i class="fa-solid fa-person-walking-arrow-right"></i></button></div>
+</div>
+
+</div>
+ 
+
+   {% comment %} <div class='message'>hello</div> {% endcomment %}
+ 
+   {% endblock content %}
+
+</body>
+</html>
