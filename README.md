@@ -15,7 +15,7 @@
    Employees can seamlessly mark their attendance by checking in upon arrival and checking
    out at the end of the day. In cases of personal errands, employees can check out and check
    back in upon return, ensuring accurate tracking of daily working hours.
-3) Personalized Profile:
+3) Personalized Profile and Session Management:
    A dedicated section allows employees to access and manage their personal information,
    promoting data accuracy and privacy.
 4) Communication:
